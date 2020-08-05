@@ -10,6 +10,7 @@ def clean_data(copied_players):
             else:
                 player['experience'] = False
             player['height'] = player['height'].split()[0]
+            player['height'] = int(player['height'])
 clean_data(copied_players)
 
 def main():
