@@ -3,17 +3,8 @@ from constants import PLAYERS, TEAMS
 
 copied_players= copy.deepcopy(PLAYERS)
 
-def clean_data(copied_players):
-        for player in copied_players:
-            if player['experience'] == "YES":
-                player['experience'] = True
-            else:
-                player['experience'] = False
-            player['height'] = player['height'].split()[0]
-            player['height'] = int(player['height'])
-clean_data(copied_players)
-
 def main():
+    
     print('\nBASKETBALL TEAM STATS TOOL\n\n---- MENU----\n\n')
     print(' Here are your choices:')
     print('  1) Display Team Stats\n  2) Quit\n\n')
@@ -30,10 +21,19 @@ def main():
         print('Thanks for coming by!')
         return
     
-    i = int(i)
-    Team_name = TEAMS[i-1]    
+    i = int(i)-1
+    Team_name = TEAMS[i]    
     print('\nTeam: ', Team_name)
     print('-------------------')
+    
+    def clean_data(copied_players):
+        for player in copied_players:
+            if player['experience'] == "YES":
+                player['experience'] = True
+            else:
+                player['experience'] = False
+            player['height'] = player['height'].split()[0]
+    clean_data(copied_players)
     
     def balance_teams(copied_players):
         player_list = copied_players[i::len(TEAMS)]
